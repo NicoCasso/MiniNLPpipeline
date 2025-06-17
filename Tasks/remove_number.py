@@ -7,7 +7,7 @@ class RemoveNumber(PipelineTask):
     def __init__(self, column_name : str):
         super().__init__(TaskReference.REMOVENUMBER, column_name)
 
-    def remove_numbers(self, text):
+    def remove_numbers(self, text:str):
         result = re.sub(r'\d+', '', text)
         return result
 

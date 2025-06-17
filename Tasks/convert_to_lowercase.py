@@ -1,5 +1,4 @@
 import pandas as pd
-import re
 from pipeline_task import PipelineTask
 from task_reference import TaskReference
 
