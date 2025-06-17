@@ -5,6 +5,10 @@ from task_reference import TaskReference
 import inflect
 
 class ConvertToNumericalValues(PipelineTask):
+    """
+    input : a str column of the dataframe 
+    output : a str column of the dataframe 
+    """
     def __init__(self, column_name : str):
         super().__init__(TaskReference.CONVERTNUMERICALVALUES, column_name)
         self.inflect_engine = inflect.engine()

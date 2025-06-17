@@ -26,6 +26,8 @@ class CustomPipeline():
                     current_task =Tasks.RemovePunctuation(column_name)
                 case TaskReference.REMOVEWHITESPACE : 
                     current_task =Tasks.RemoveWhiteSpace(column_name)
+                case TaskReference.TOKENIZE : 
+                    current_task =Tasks.Tokenize(column_name)
                 case TaskReference.REMOVESTOPWORDS : 
                     nltk.download('stopwords')
                     current_task =Tasks.RemoveStopwords(column_name)

@@ -5,5 +5,6 @@ from .convert_to_lowercase import ConvertToLowercase
 from .remove_html_tags import RemoveHtmlTags
 from .remove_number import RemoveNumber
 from .remove_punctuation import RemovePunctuation
+from .tokenize import Tokenize
 from .remove_stopwords import RemoveStopwords
 from .remove_whitespace import RemoveWhiteSpace

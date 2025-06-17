@@ -4,6 +4,10 @@ from pipeline_task import PipelineTask
 from task_reference import TaskReference
 
 class RemoveHtmlTags(PipelineTask):
+    """
+    input : a str column of the dataframe 
+    output : a str column of the dataframe 
+    """
     def __init__(self, column_name : str):
         super().__init__(TaskReference.REMOVEHTMLTAG, column_name)
 

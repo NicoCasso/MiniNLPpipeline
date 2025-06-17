@@ -4,10 +4,14 @@ from pipeline_task import PipelineTask
 from task_reference import TaskReference
 
 class RemoveNumber(PipelineTask):
+    """
+    input : a str column of the dataframe 
+    output : a str column of the dataframe 
+    """
     def __init__(self, column_name : str):
         super().__init__(TaskReference.REMOVENUMBER, column_name)
 
-    def remove_numbers(self, text:str):
+    def remove_numbers(self, text:str) -> str:
         result = re.sub(r'\d+', '', text)
         return result
 

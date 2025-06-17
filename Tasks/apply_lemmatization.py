@@ -9,15 +9,18 @@ from pipeline_task import PipelineTask
 from task_reference import TaskReference
 
 class ApplyLemmatization(PipelineTask):
+    """
+    input : a list[str] column of the dataframe 
+    output : a list[str] column of the dataframe 
+    """
     def __init__(self, column_name : str):
         super().__init__(TaskReference.APPLYLEMMATIZATION, column_name)
         self.lemmatizer = WordNetLemmatizer()
 
-    def lemma_words(self, text:str):
-        word_tokens = word_tokenize(text)
-        lemmas = [self.lemmatizer.lemmatize(word) for word in word_tokens]
+    def lemma_words(self, text_list:list[str]) -> list[str]:
+        lemmas = [self.lemmatizer.lemmatize(word) for word in text_list]
         return lemmas
 
     def do_work(self, current_data : pd.DataFrame) -> pd.DataFrame:
-        current_data[self.column_name] = current_data[self.column_name].apply(self.lemma_words)
+        current_data[self.column_name] = current_data[self.column_name].astype(list[str]).apply(self.lemma_words)
         return current_data
