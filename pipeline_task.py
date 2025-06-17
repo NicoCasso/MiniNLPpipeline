@@ -1,14 +1,10 @@
-from enum import Enum
+import pandas as pd
+from task_reference import TaskReference
 
-class PipelineTask(Enum):
-    REMOVEHTMLTAG = 1,
-    CONVERTTOLOWERCASE = 2,
-    REMOVENUMBER = 3,
-    CONVERTNUMERICALVALUES = 4,
-    REMOVEPUNCTUATION = 5,
-    REMOVEWHITESPACE =6,
-    REMOVESTOPWORDS = 7,
-    APPLYSTEMMING = 8,
-    APPLYLEMMATIZATION = 9
+class PipelineTask():
+    def __init__(self, task_reference : TaskReference, column_name:str):
+        self.reference = task_reference
+        self.column_name = column_name
 
-
+    def do_work(self, data : pd.DataFrame) -> pd.DataFrame:
+        return data
