@@ -20,5 +20,6 @@ class ApplyStemming(PipelineTask):
         return stems
 
     def do_work(self, current_data : pd.DataFrame) -> pd.DataFrame:
-        current_data[self.column_name] = current_data[self.column_name].astype(list[str]).apply(self.stem_words)
+        current_data[self.column_name] = current_data[self.column_name].apply(
+            self.safe_cast_to_str_list).apply(self.stem_words)
         return current_data

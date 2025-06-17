@@ -22,5 +22,6 @@ class ApplyLemmatization(PipelineTask):
         return lemmas
 
     def do_work(self, current_data : pd.DataFrame) -> pd.DataFrame:
-        current_data[self.column_name] = current_data[self.column_name].astype(list[str]).apply(self.lemma_words)
+        current_data[self.column_name] = current_data[self.column_name].apply(
+            self.safe_cast_to_str_list).apply(self.lemma_words)
         return current_data

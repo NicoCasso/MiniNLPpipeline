@@ -12,13 +12,14 @@ class RemoveStopwords(PipelineTask):
     """
     def __init__(self, column_name : str):
         super().__init__(TaskReference.REMOVESTOPWORDS, column_name)
-        self.all_words : set[str] = []
 
     def remove_stopwords(self, word_list:list[str]) -> list[str]:
         stop_words = set(sw.words("english"))
+        stop_words.add('')
         filtered_list = [word for word in word_list if word not in stop_words]
         return filtered_list
 
     def do_work(self, current_data : pd.DataFrame) -> pd.DataFrame:
-        current_data[self.column_name] = current_data[self.column_name].astype(list[str]).apply(self.remove_stopwords)
+        current_data[self.column_name] = current_data[self.column_name].apply(
+            self.safe_cast_to_str_list).apply(self.remove_stopwords)
         return current_data

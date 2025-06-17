@@ -11,7 +11,7 @@ class RemovePunctuation(PipelineTask):
     def __init__(self, column_name : str):
         super().__init__(TaskReference.REMOVEPUNCTUATION, column_name)
 
-    def remove_punctuation(self, text:str) ->str:
+    def remove_punctuation(self, text:str) -> str:
         translator = str.maketrans('', '', string.punctuation)
         return text.translate(translator)
 

@@ -41,7 +41,7 @@ class CustomPipeline():
                 current_data = current_task.do_work(current_data)
                 print(f"{str(current_task.reference)} done.")
             except Exception as ex:
-                print(f"Error in {str(current_task.reference)}")
+                print(f"Error in {current_task.reference} : {ex}")
 
         return current_data
                     
