@@ -1,6 +1,7 @@
 .venv
-.zip
-.csv
+
 __pycache__
-DATA/IMDB Dataset.csv
-DATA/output dataset.csv
+
+DATA/archive.zip
+DATA/IMDB_Dataset.csv
+DATA/output_dataset.csv
